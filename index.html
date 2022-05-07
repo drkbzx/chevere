@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Workplace Complaint Form</title>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+			integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+			crossorigin="anonymous"
+		/>
+		<style>
+			html,
+			body {
+				min-height: 100%;
+			}
+			body,
+			div,
+			form,
+			input,
+			select,
+			p {
+				padding: 0;
+				margin: 0;
+				outline: none;
+				font-family: Roboto, Arial, sans-serif;
+				font-size: 14px;
+				color: #666;
+				line-height: 22px;
+			}
+			h1 {
+				margin: 15px 0;
+				font-weight: 400;
+			}
+			.testbox {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: inherit;
+				padding: 3px;
+			}
+			form {
+				width: 100%;
+				padding: 20px;
+				background: #fff;
+				box-shadow: 0 2px 5px #ccc;
+			}
+			input,
+			select,
+			textarea {
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			input:hover,
+			select:hover,
+			textarea:hover {
+				outline: none;
+				border: 1px solid #095484;
+			}
+			input {
+				width: calc(100% - 10px);
+				padding: 5px;
+			}
+			select {
+				width: 100%;
+				padding: 7px 0;
+				background: transparent;
+			}
+			textarea {
+				width: calc(100% - 6px);
+			}
+			.item {
+				position: relative;
+				margin: 10px 0;
+			}
+			input[type='date']::-webkit-inner-spin-button {
+				display: none;
+			}
+			.item i,
+			input[type='date']::-webkit-calendar-picker-indicator {
+				position: absolute;
+				font-size: 20px;
+				color: #a9a9a9;
+			}
+			.item i {
+				right: 2%;
+				top: 30px;
+				z-index: 1;
+			}
+			[type='date']::-webkit-calendar-picker-indicator {
+				right: 1%;
+				z-index: 2;
+				opacity: 0;
+				cursor: pointer;
+			}
+			.btn-block {
+				margin-top: 20px;
+				text-align: center;
+			}
+			button {
+				width: 150px;
+				padding: 10px;
+				border: none;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				background-color: #095484;
+				font-size: 16px;
+				color: #fff;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: #0666a3;
+			}
+		</style>
+		<script type="text/javascript">
+			function clickyClick() {
+				url =
+					'http://wa.me/5214922648447?text=' +
+					'*PEDIDO:* ' +
+					document.getElementById('pedidoChido').value +
+					'%0A . %0A *SE RECOGE EN:* ' +
+					document.getElementById('drec').value +
+					' %0A *TEL DE QUIEN SOLICITA:* ' +
+					document.getElementById('numsol').value +
+					' %0A . %0A *SE ENTREGA EN:* ' +
+					document.getElementById('dent').value +
+					' %0A *TEL DE QUIEN RECIBE:* ' +
+					document.getElementById('numrec').value +
+					' %0A . %0A *NOTAS ADICIONALES:* ' +
+					document.getElementById('notas').value +
+					' %0A . %0A';
+				window.open(url, '_blank');
+			}
+		</script>
+	</head>
+	<body>
+		<div class="testbox">
+			<form action="/">
+				<h1>Pedidos Chévere</h1>
+				<div class="item">
+					<p><strong>Describa con detalle</strong> su pedido</p>
+					<textarea
+						id="pedidoChido"
+						rows="5"
+						placeholder="Ejemplo: Pasar por unas llaves olvidadas"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+					></textarea>
+				</div>
+				<div class="item">
+					<p>Dirección completa de <strong>recolección</strong></p>
+					<div>
+						<input
+							id="drec"
+							type="text"
+							name="name"
+							placeholder="Calle, #, colonia, referencia, nombre del lugar, etc"
+							onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+						/>
+					</div>
+				</div>
+				<div class="item">
+					<p>Dirección completa de <strong>entrega</strong></p>
+					<input
+						id="dent"
+						type="text"
+						name="name"
+						placeholder="Calle, #, colonia, referencia, nombre del lugar, etc"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+					/>
+				</div>
+				<div class="item">
+					<p>
+						Número de teléfono de <strong>quien solicita el servicio</strong>
+					</p>
+					<input
+						id="numsol"
+						type="text"
+						name="name"
+						placeholder="Ejemplo: 4921112323 (a 10 dígitos)"
+						onkeyup="this.value = this.value.replace(/[^0-9]/gi,'')"
+						maxlength="10"
+					/>
+				</div>
+				<div class="item">
+					<p>Número de teléfono de <strong>quien recibe</strong></p>
+					<input
+						id="numrec"
+						type="text"
+						name="name"
+						placeholder="Ejemplo: 4922648447 (a 10 dígitos)"
+						onkeyup="this.value = this.value.replace(/[^0-9]/gi,'')"
+						maxlength="10"
+					/>
+				</div>
+				<div class="item">
+					<p>Notas adicionales para el repartidor:</p>
+					<textarea
+						id="notas"
+						rows="5"
+						placeholder="Ejemplo: Casa verde de 3 pisos"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+					></textarea>
+				</div>
+
+				<div class="btn-block">
+					<button onclick="clickyClick()">SOLICITAR SERVICIO</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
