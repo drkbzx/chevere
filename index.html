@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Workplace Complaint Form</title>
+		<title>PEDIDOS CHÉVERE</title>
 		<link
 			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
 			rel="stylesheet"
@@ -116,61 +116,83 @@
 			button:hover {
 				background-color: #0666a3;
 			}
+			input {
+				border: 2px solid currentcolor;
+			}
+			input:invalid {
+				border: 2px dashed red;
+			}
+			input:invalid:focus {
+				background-image: linear-gradient(pink, lightgreen);
+			}
+			textarea {
+				border: 2px solid currentcolor;
+			}
+			textarea:invalid {
+				border: 2px dashed red;
+			}
+			textarea:invalid:focus {
+				background-image: linear-gradient(pink, lightgreen);
+			}
 		</style>
 		<script type="text/javascript">
 			function clickyClick() {
-				url =
-					'http://wa.me/5214922648447?text=' +
-					'*PEDIDO:* ' +
-					document.getElementById('pedidoChido').value +
-					'%0A . %0A *SE RECOGE EN:* ' +
-					document.getElementById('drec').value +
-					' %0A *TEL DE QUIEN SOLICITA:* ' +
-					document.getElementById('numsol').value +
-					' %0A . %0A *SE ENTREGA EN:* ' +
-					document.getElementById('dent').value +
-					' %0A *TEL DE QUIEN RECIBE:* ' +
-					document.getElementById('numrec').value +
-					' %0A . %0A *NOTAS ADICIONALES:* ' +
-					document.getElementById('notas').value +
-					' %0A . %0A';
-				window.open(url, '_self');
+				url2 = `https://api.whatsapp.com/send/?phone=5214922648447&text=%2A%F0%9F%9A%80PEDIDO%20CH%C3%89VERE%3A%F0%9F%A4%99%2A%0A________%0A%F0%9F%93%84${
+					document.getElementById('pedidoChido').value
+				}%0A________%0A%2A%F0%9F%8E%92SE%20RECOGE%20EN%3A%E2%A4%B5%2A%0A${
+					document.getElementById('drec').value
+				}%0A.%0A%2A%F0%9F%93%B2N%C3%9AMERO%20DE%20QUIEN%20SOLICITA%3A%E2%A4%B5%2A%0A${
+					document.getElementById('numsol').value
+				}%0A________%0A%2A%F0%9F%8F%81SE%20ENTREGA%20EN%3A%E2%A4%B5%2A%0A${
+					document.getElementById('dent').value
+				}%0A.%0A%2A%F0%9F%93%B2N%C3%9AMERO%20DE%20QUIEN%20RECIBE%3A%E2%A4%B5%2A%0A${
+					document.getElementById('numrec').value
+				}%0A________%0A%2A%F0%9F%93%84NOTAS%20ADICIONALES%3A%E2%A4%B5%2A%0A${
+					document.getElementById('notas').value
+				}`;
+				window.open(url2, '_blank');
 			}
 		</script>
 	</head>
 	<body>
 		<div class="testbox">
-			<form action="/">
+			<form onsubmit="clickyClick()">
 				<h1>Pedidos Chévere</h1>
 				<div class="item">
 					<p><strong>Describa con detalle</strong> su pedido</p>
 					<textarea
+						required
 						id="pedidoChido"
 						rows="5"
 						placeholder="Ejemplo: Pasar por unas llaves olvidadas"
-						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,ñ\s]/gi,'')"
+						minlength="20"
 					></textarea>
 				</div>
 				<div class="item">
 					<p>Dirección completa de <strong>recolección</strong></p>
 					<div>
 						<input
+							required
 							id="drec"
 							type="text"
 							name="name"
 							placeholder="Calle, #, colonia, referencia, nombre del lugar, etc"
-							onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+							onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,ñ\s]/gi,'')"
+							pattern=".{20,}"
 						/>
 					</div>
 				</div>
 				<div class="item">
 					<p>Dirección completa de <strong>entrega</strong></p>
 					<input
+						required
 						id="dent"
 						type="text"
 						name="name"
 						placeholder="Calle, #, colonia, referencia, nombre del lugar, etc"
-						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,ñ\s]/gi,'')"
+						pattern=".{20,}"
 					/>
 				</div>
 				<div class="item">
@@ -178,23 +200,29 @@
 						Número de teléfono de <strong>quien solicita el servicio</strong>
 					</p>
 					<input
+						required
 						id="numsol"
 						type="text"
 						name="name"
 						placeholder="Ejemplo: 4921112323 (a 10 dígitos)"
 						onkeyup="this.value = this.value.replace(/[^0-9]/gi,'')"
 						maxlength="10"
+						minlength="10"
+						pattern=".{10,10}"
 					/>
 				</div>
 				<div class="item">
 					<p>Número de teléfono de <strong>quien recibe</strong></p>
 					<input
+						required
 						id="numrec"
 						type="text"
 						name="name"
 						placeholder="Ejemplo: 4922648447 (a 10 dígitos)"
 						onkeyup="this.value = this.value.replace(/[^0-9]/gi,'')"
 						maxlength="10"
+						minlength="10"
+						pattern=".{10,10}"
 					/>
 				</div>
 				<div class="item">
@@ -203,12 +231,12 @@
 						id="notas"
 						rows="5"
 						placeholder="Ejemplo: Casa verde de 3 pisos"
-						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9#.ñ\s]/gi,'')"
+						onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,ñ\s]/gi,'')"
 					></textarea>
 				</div>
 
 				<div class="btn-block">
-					<button onclick="clickyClick()">SOLICITAR SERVICIO</button>
+					<button type="submit">SOLICITAR SERVICIO</button>
 				</div>
 			</form>
 		</div>
